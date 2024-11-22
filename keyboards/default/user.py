@@ -49,3 +49,16 @@ async def set_language_settings():
     )
 
     return markup
+
+
+async def my_address_keyboards(addresses):
+    markup = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(
+                text=f"address name",
+                callback_data=f"name")
+            ] for address in addresses
+        ]
+    )
+
+    return markup
