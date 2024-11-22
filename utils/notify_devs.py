@@ -1,4 +1,5 @@
-from loader import bot, logger
+from loader import bot
+from logging_settings import logger
 from main.config import DEVS
 
 

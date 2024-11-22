@@ -6,6 +6,5 @@ async def set_default_commands(dp):
         [
             types.BotCommand("start", "Start to use bot 🚀️️️️️️"),
             types.BotCommand("help", "Find all features 🤖"),
-            types.BotCommand("feedback", "Send feedback to admin 📝"),
         ]
     )

@@ -1,0 +1,24 @@
+firs time:
+
+pybabel extract . -o locale/lang.pot
+pybabel init -i locale/lang.pot -d locale -D lang -l uz
+pybabel compile -d locale -D lang
+
+————————————————————
+next time:
+
+pybabel extract . -o locale/lang.pot
+pybabel update -d locale -D lang -i locale/lang.pot
+pybabel compile -d locale -D lang
+
+-------------
+migration with alembic:
+- alembic init alembic
+
+- alembic revision --autogenerate -m "comment to change"
+- alembic stamp head
+- alembic upgrade head
+
+-------------
+pg_dump -U postgres -h source_host -d source_dbname -F c -f /tmp/mydb_backup.sql
+psql -U sanjarbek -h localhost -d water /tmp/backup1.sql

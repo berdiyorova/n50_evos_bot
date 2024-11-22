@@ -1,7 +1,7 @@
 from aiogram import executor
 
 from loader import dp
-import handlers
+import handlers, middlewares, filters
 from main.database import database
 from utils.notify_devs import send_notification_to_devs
 

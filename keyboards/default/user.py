@@ -5,15 +5,45 @@ async def user_main_menu_keyboard():
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
-                KeyboardButton(text="Menu")
+                KeyboardButton(text="🍴 Menu")
             ],
             [
-                KeyboardButton(text="My orders"),
-                KeyboardButton(text="Our branches"),
+                KeyboardButton(text="🛍 My orders")
             ],
             [
-                KeyboardButton(text="Contact"),
-                KeyboardButton(text="Settings"),
+                KeyboardButton(text="✍️ Leave feedback"),
+                KeyboardButton(text="⚙️ Settings"),
+            ]
+        ], resize_keyboard=True
+    )
+
+    return markup
+
+
+async def user_address_keyboard():
+    markup = ReplyKeyboardMarkup(
+        keyboard=[
+            [
+                KeyboardButton(text="🗺 My address")
+            ],
+            [
+                KeyboardButton(text="📍 Submit geolocation"),
+                KeyboardButton(text="⬅️ Back"),
+            ]
+        ], resize_keyboard=True
+    )
+
+    return markup
+
+
+async def set_language_settings():
+    markup = ReplyKeyboardMarkup(
+        keyboard=[
+            [
+                KeyboardButton(text="Set language settings")
+            ],
+            [
+                KeyboardButton(text="⬅️ Back")
             ]
         ], resize_keyboard=True
     )

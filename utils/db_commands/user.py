@@ -2,16 +2,16 @@ from typing import Union
 
 from aiogram import types
 
-from loader import logger
+from logging_settings import logger
 from main.constants import UserStatus
 from main.database import database
-from main.models import users
+from main.models import user
 
 
 async def get_user(chat_id: int) -> Union[dict, None]:
     """Get user data by chat id"""
     try:
-        query = users.select().where(users.c.chat_id == chat_id)
+        query = user.select().where(user.c.chat_id == chat_id)
         row = await database.fetch_one(query=query)
         return dict(row) if row else None
     except Exception as e:
@@ -23,7 +23,7 @@ async def get_user(chat_id: int) -> Union[dict, None]:
 async def add_user(message: types.Message, data: dict) -> Union[int, None]:
     """Add user to database"""
     try:
-        query = users.insert().values(
+        query = user.insert().values(
             chat_id=message.chat.id,
             full_name=data.get("full_name"),
             phone_number=data.get("phone_number"),
@@ -32,7 +32,7 @@ async def add_user(message: types.Message, data: dict) -> Union[int, None]:
             status=UserStatus.active,
             created_at=message.date,
             updated_at=message.date
-        ).returning(users.c.id)
+        ).returning(user.c.id)
         new_user_id = await database.execute(query=query)
         return new_user_id
     except Exception as e:

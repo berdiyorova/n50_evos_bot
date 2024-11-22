@@ -1,0 +1,43 @@
+# Uzbek translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-11-21 23:12+0500\n"
+"PO-Revision-Date: 2024-11-20 17:24+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uz\n"
+"Language-Team: uz <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: handlers/users/start.py:18
+msgid "Welcome back! Select an option:"
+msgstr "Xush kelibsiz! Quyidagilardan birini tanlang:"
+
+#: handlers/users/start.py:36
+msgid "Please, enter your full name"
+msgstr "Iltimos, ismingizni kiriting"
+
+#: handlers/users/start.py:47
+msgid "Please, enter your phone number by the button below 👇"
+msgstr "Iltimos, pastdagi tugma orqali telefon raqamingizni kiriting 👇"
+
+#: handlers/users/start.py:60
+msgid "You have successfully registered ✅"
+msgstr "Siz muvaffaqiyatli ro'yxatdan o'tdingiz ✅"
+
+#: handlers/users/start.py:63
+msgid "Sorry, please try again later 😔"
+msgstr "Kechirasiz, iltimos keyinroq urinib ko'ring 😔"
+
+#~ msgid "Welcome back my hero 😊"
+#~ msgstr "Xush kelibsiz Msr/Mss 😊"
+
