@@ -1,3 +1,5 @@
+from loader import _
+
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.callback_data import CallbackData
 
@@ -26,7 +28,27 @@ test_callback_data = CallbackData("general_button", "action", "product_id")
 #     return markup
 
 languages = InlineKeyboardMarkup(row_width=3).add(
-            InlineKeyboardButton(text="🇺🇿 Uzbek", callback_data='uz'),
-            InlineKeyboardButton(text="🏴󠁧󠁢󠁥󠁮󠁧󠁿 Russian", callback_data='ru'),
-            InlineKeyboardButton(text="🇷🇺 English", callback_data='en')
+            InlineKeyboardButton(text=_("🇺🇿 Uzbek"), callback_data='uz'),
+            InlineKeyboardButton(text=_("🏴󠁧󠁢󠁥󠁮󠁧󠁿 Russian"), callback_data='ru'),
+            InlineKeyboardButton(text=_("🇷🇺 English"), callback_data='en')
 )
+
+
+async def create_cart_keyboard(quantity):
+    markup = InlineKeyboardMarkup()
+
+    row1 = [
+        InlineKeyboardButton(text="-", callback_data="decrease"),
+        InlineKeyboardButton(text=str(quantity), callback_data="quantity"),
+        InlineKeyboardButton(text="+", callback_data="increase")
+    ]
+    row2 = [
+        InlineKeyboardButton(text="🛒 Add to cart", callback_data="add_to_cart")
+    ]
+
+    markup.add(*row1)
+    markup.add(*row2)
+    return markup
+
+
+place_order = InlineKeyboardMarkup(row_width=1).add(InlineKeyboardButton(text=_("Place order"), callback_data="oder"))
