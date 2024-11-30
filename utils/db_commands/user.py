@@ -39,3 +39,18 @@ async def add_user(message: types.Message, data: dict) -> Union[int, None]:
         error_text = f"Error adding new user{message.chat.id}: {e}"
         logger.error(error_text)
         return None
+
+
+async def update_user(message: types.Message, language: str) -> Union[str, None]:
+    """Update user language field"""
+    try:
+        user_data = await get_user(message.chat.id)
+        query = user.update().where(user.c.id == user_data['id']).values(
+            language=language
+        ).returning(user.c.language)
+        user_language = await database.execute(query=query)
+        return user_language
+    except Exception as e:
+        error_text = f"Error updating user{message.chat.id}: {e}"
+        logger.error(error_text)
+        return None

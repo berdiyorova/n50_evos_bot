@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-21 23:12+0500\n"
-"PO-Revision-Date: 2024-11-20 17:24+0500\n"
+"POT-Creation-Date: 2024-12-01 00:49+0500\n"
+"PO-Revision-Date: 2024-11-30 15:10+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uz\n"
 "Language-Team: uz <LL@li.org>\n"
@@ -18,26 +18,137 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
+#: handlers/users/address.py:24
+msgid "Submit your geolocation 📍 or select a delivery address"
+msgstr ""
+"Geografik joylashuvingizni 📍 yuboring yoki yetkazib berish manzilini "
+"tanlang"
+
+#: handlers/users/address.py:56
+msgid "Your address:"
+msgstr "Sizning manzilingiz:"
+
+#: handlers/users/address.py:60
+msgid "You don't have any addresses yet"
+msgstr "Sizda hozircha manzillar yo'q"
+
+#: handlers/users/backs.py:12
+msgid "Select an option:"
+msgstr "Variantni tanlang:"
+
+#: handlers/users/feedbacks.py:14
+msgid "Submit your feedback:"
+msgstr "Fikringizni yuboring:"
+
+#: handlers/users/feedbacks.py:27
+msgid "Your feedback has successfully submitted ✅"
+msgstr "Sizning fikringiz muvaffaqiyatli yuborildi ✅"
+
+#: handlers/users/feedbacks.py:30 handlers/users/start.py:60
+msgid "Sorry, please try again later 😔"
+msgstr "Kechirasiz, keyinroq qayta urinib ko'ring 😔"
+
+#: handlers/users/menu.py:21
+msgid "Choose a product category:"
+msgstr "Kategoriyani tanlang:"
+
+#: handlers/users/orders.py:116
+msgid "Please, select a payment method:"
+msgstr "Iltimos, toʻlov usulini tanlang:"
+
+#: handlers/users/orders.py:129
+msgid "Order received. We deliver in 25-30 minutes. 🚚"
+msgstr "Buyurtma olindi😊. 25-30 daqiqada yetkazib beramiz.🚚"
+
+#: handlers/users/orders.py:135
+msgid "Currently not working"
+msgstr "Hozirda ishlamayapti"
+
+#: handlers/users/orders.py:156
+msgid "You have not ordered anything"
+msgstr "Siz hech narsa buyurtma qilmadingiz"
+
+#: handlers/users/settings.py:16
+#, fuzzy
+msgid "Select_action:"
+msgstr "Amalni tanlang:"
+
 #: handlers/users/start.py:18
 msgid "Welcome back! Select an option:"
-msgstr "Xush kelibsiz! Quyidagilardan birini tanlang:"
+msgstr "Qaytib kelganingizdan xursandmiz! Quyidagilardan birini tanlang:"
 
-#: handlers/users/start.py:36
+#: handlers/users/start.py:32
 msgid "Please, enter your full name"
-msgstr "Iltimos, ismingizni kiriting"
+msgstr "Iltimos, to'liq ismingizni kiriting"
 
-#: handlers/users/start.py:47
+#: handlers/users/start.py:44
 msgid "Please, enter your phone number by the button below 👇"
-msgstr "Iltimos, pastdagi tugma orqali telefon raqamingizni kiriting 👇"
+msgstr "Quyidagi tugma orqali telefon raqamingizni kiriting👇"
 
-#: handlers/users/start.py:60
+#: handlers/users/start.py:57
 msgid "You have successfully registered ✅"
-msgstr "Siz muvaffaqiyatli ro'yxatdan o'tdingiz ✅"
+msgstr "Siz muvaffaqiyatli ro'yxatdan o'tdingiz✅"
 
-#: handlers/users/start.py:63
-msgid "Sorry, please try again later 😔"
-msgstr "Kechirasiz, iltimos keyinroq urinib ko'ring 😔"
+#: keyboards/common.py:9
+msgid "Share phone number ☎️"
+msgstr ""
 
-#~ msgid "Welcome back my hero 😊"
-#~ msgstr "Xush kelibsiz Msr/Mss 😊"
+#: keyboards/default/user.py:12
+msgid "🍴 Menu"
+msgstr "🍴 Menyu"
+
+#: keyboards/default/user.py:15
+msgid "🛍 My orders"
+msgstr "🛍 Mening buyurtmalarim"
+
+#: keyboards/default/user.py:18
+msgid "✍️ Leave feedback"
+msgstr "✍️ Fikr qoldiring"
+
+#: keyboards/default/user.py:19
+msgid "⚙️ Settings"
+msgstr "⚙️ Sozlamalar"
+
+#: keyboards/default/user.py:31
+msgid "🗺 My addresses"
+msgstr "🗺 Mening manzillarim"
+
+#: keyboards/default/user.py:34
+msgid "📍 Submit geolocation"
+msgstr "📍 Geolokatsiyani yuboring"
+
+#: keyboards/default/user.py:35 keyboards/default/user.py:50
+#: keyboards/default/user.py:63 keyboards/default/user.py:83
+#: keyboards/default/user.py:103 keyboards/default/user.py:120
+msgid "⬅️ Back"
+msgstr "⬅️ Orqaga"
+
+#: keyboards/default/user.py:47
+msgid "Set language settings"
+msgstr "Til sozlamalarini o'rnating"
+
+#: keyboards/default/user.py:111
+msgid "Cash"
+msgstr "Naqd to'lov"
+
+#: keyboards/inline/user.py:31
+msgid "🇺🇿 Uzbek"
+msgstr "🇺🇿 O'zbekcha"
+
+#: keyboards/inline/user.py:32
+#, fuzzy
+msgid "󠁧󠁢󠁥󠁮󠁧󠁿🇷🇺 Russian"
+msgstr "🇷🇺󠁧󠁢󠁥󠁮󠁧󠁿 Ruscha"
+
+#: keyboards/inline/user.py:33
+msgid "🏴 English"
+msgstr "🏴 Inglizcha"
+
+#: keyboards/inline/user.py:46
+msgid "🛒 Add to cart"
+msgstr ""
+
+#: keyboards/inline/user.py:56
+msgid "Place order"
+msgstr "Buyurtma berish"
 

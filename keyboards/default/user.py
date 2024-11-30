@@ -1,19 +1,22 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from loader import _
+from aiogram.dispatcher import FSMContext
+
+from utils.get_language import get_lang_by_text
 
 
-async def user_main_menu_keyboard():
+async def user_main_menu_keyboard(language: str):
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
-                KeyboardButton(text=_("🍴 Menu"))
+                KeyboardButton(text=_("🍴 Menu", locale=language))
             ],
             [
-                KeyboardButton(text=_("🛍 My orders"))
+                KeyboardButton(text=_("🛍 My orders", locale=language))
             ],
             [
-                KeyboardButton(text=_("✍️ Leave feedback")),
-                KeyboardButton(text=_("⚙️ Settings")),
+                KeyboardButton(text=_("✍️ Leave feedback", locale=language)),
+                KeyboardButton(text=_("⚙️ Settings", locale=language)),
             ]
         ], resize_keyboard=True
     )
@@ -21,15 +24,15 @@ async def user_main_menu_keyboard():
     return markup
 
 
-async def user_address_keyboard():
+async def user_address_keyboard(language: str):
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
-                KeyboardButton(text=_("🗺 My addresses"))
+                KeyboardButton(text=_("🗺 My addresses", locale=language))
             ],
             [
-                KeyboardButton(text=_("📍 Submit geolocation"), request_location=True),
-                KeyboardButton(text=_("⬅️ Back")),
+                KeyboardButton(text=_("📍 Submit geolocation", locale=language), request_location=True),
+                KeyboardButton(text=_("⬅️ Back", locale=language)),
             ]
         ], resize_keyboard=True
     )
@@ -37,14 +40,14 @@ async def user_address_keyboard():
     return markup
 
 
-async def set_language():
+async def set_language(language: str):
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
-                KeyboardButton(text=_("Set language settings"))
+                KeyboardButton(text=_("Set language settings", locale=language))
             ],
             [
-                KeyboardButton(text=_("⬅️ Back"))
+                KeyboardButton(text=_("⬅️ Back", locale=language))
             ]
         ], resize_keyboard=True
     )
@@ -52,15 +55,16 @@ async def set_language():
     return markup
 
 
-async def my_address_keyboards(addresses):
+async def my_address_keyboards(addresses, language: str):
+
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     for address in addresses:
         markup.add(KeyboardButton(text=address['name']))
-    markup.add(KeyboardButton(text=_("⬅️ Back")))
+    markup.add(KeyboardButton(text=_("⬅️ Back", locale=language)))
     return markup
 
 
-async def categories_keyboards(categories):
+async def categories_keyboards(categories, language: str):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     temp_category = list()
 
@@ -76,11 +80,11 @@ async def categories_keyboards(categories):
     if temp_category:
         markup.add(KeyboardButton(text=temp_category[0]))
 
-    markup.add(KeyboardButton(text=_("⬅️ Back")))
+    markup.add(KeyboardButton(text=_("⬅️ Back", locale=language)))
     return markup
 
 
-async def products_keyboards(products):
+async def products_keyboards(products, language: str):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     temp_product = list()
 
@@ -96,24 +100,24 @@ async def products_keyboards(products):
     if temp_product:
         markup.add(KeyboardButton(text=temp_product[0]['name']))
 
-    markup.add(KeyboardButton(text=_("⬅️ Back")))
+    markup.add(KeyboardButton(text=_("⬅️ Back", locale=language)))
     return markup
 
 
-async def payment_method_keyboard():
+async def payment_method_keyboard(language: str):
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [
-                KeyboardButton(text=_("Cash"))
+                KeyboardButton(text=_("Cash", locale=language))
             ],
             [
-                KeyboardButton(text="Click")
+                KeyboardButton(text="Click", locale=language)
             ],
             [
-                KeyboardButton(text="Payme")
+                KeyboardButton(text="Payme", locale=language)
             ],
             [
-                KeyboardButton(text=_("⬅️ Back"))
+                KeyboardButton(text=_("⬅️ Back", locale=language))
             ]
         ], resize_keyboard=True
     )

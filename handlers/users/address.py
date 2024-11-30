@@ -17,19 +17,19 @@ def create_map_link(latitude, longitude):
     return f"https://www.google.com/maps/?q={latitude},{longitude}"
 
 
-@dp.message_handler(text="🍴 Menu")
+@dp.message_handler(lambda message: message.text in ["🍴 Menu", "🍴 Menyu"])
 async def get_address_menu(message: types.Message, state: FSMContext):
     data = await state.get_data()
     language = data.get('language')
     await message.answer(text=_("Submit your geolocation 📍 or select a delivery address", locale=language),
-                         reply_markup=await user_address_keyboard())
+                         reply_markup=await user_address_keyboard(language=language))
 
     map_link = "https://www.google.com/maps"  # Link to Google Maps
     await message.answer(f"You can also choose your location on the map: {map_link}")
 
 
 @dp.message_handler(content_types=types.ContentTypes.LOCATION)
-async def get_full_location(message: types.Message, state: FSMContext):
+async def get_full_location(message: types.Message):
     latitude = message.location.latitude
     longitude = message.location.longitude
     address = await get_full_address(latitude=latitude, longitude=longitude)
@@ -47,30 +47,32 @@ async def get_full_location(message: types.Message, state: FSMContext):
 
 
 
-@dp.message_handler(text="🗺 My addresses")
+@dp.message_handler(lambda message: message.text in ["🗺 My addresses", "🗺 Mening manzillarim"])
 async def get_my_address(message: types.Message, state: FSMContext):
     data = await state.get_data()
     language = data.get('language')
     addresses = await get_user_address(message.chat.id)
     if addresses:
         await message.answer(text=_("Your address:", locale=language),
-                             reply_markup=await my_address_keyboards(addresses))
+                             reply_markup=await my_address_keyboards(addresses, language=language))
 
     else:
         await message.answer(text=_("You don't have any addresses yet", locale=language),
-                             reply_markup=await user_address_keyboard())
+                             reply_markup=await user_address_keyboard(language=language))
     await RegisterState.address.set()
 
 
 @dp.message_handler(state=RegisterState.address)
 async def get_address_name(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    language = data.get('language')
     address_name = message.text
     address = await get_address_by_name(address_name)
     if address:
         menu.categories = await get_categories()
 
         await message.answer("Choose a product category:",
-                             reply_markup=await categories_keyboards(menu.categories))
+                             reply_markup=await categories_keyboards(menu.categories, language=language))
     else:
         await message.answer("You do not have such an address.")
     await state.finish()

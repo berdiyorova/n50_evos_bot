@@ -12,11 +12,11 @@ from utils.db_commands.user import get_user, add_user
 
 
 @dp.message_handler(commands=["start"])
-async def start_handler(message: types.Message):
+async def start_handler(message: types.Message, state: FSMContext):
     user = await get_user(chat_id=message.chat.id)
     if user:
         text = _("Welcome back! Select an option:")
-        await select_section(message=message, text=text)
+        await select_section(message=message, text=text, state=state)
     else:
         text = "🇺🇿 Tilni tanlang\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 Choose language\n🇷🇺 Выберите язык"
         await message.answer(text=text, reply_markup=languages)
@@ -42,7 +42,7 @@ async def get_full_name_handler(message: types.Message, state: FSMContext):
     language = data.get('language')
 
     text = _("Please, enter your phone number by the button below 👇", locale=language)
-    await message.answer(text=text, reply_markup=await phone_number_share_keyboard())
+    await message.answer(text=text, reply_markup=await phone_number_share_keyboard(language=language))
     await RegisterState.phone_number.set()
 
 
@@ -55,12 +55,14 @@ async def get_phone_number_handler(message: types.Message, state: FSMContext):
     new_user = await add_user(message=message, data=data)
     if new_user:
         text = _("You have successfully registered ✅", locale=language)
-        await select_section(message=message, text=text)
+        await select_section(message=message, text=text, state=state)
     else:
         text = _("Sorry, please try again later 😔", locale=language)
         await message.answer(text=text)
 
 
 
-async def select_section(message, text):
-    await message.answer(text=text, reply_markup=await user_main_menu_keyboard())
+async def select_section(message, text, state: FSMContext):
+    data = await state.get_data()
+    language = data.get('language')
+    await message.answer(text=text, reply_markup=await user_main_menu_keyboard(language=language))
